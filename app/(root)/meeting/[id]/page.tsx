@@ -7,11 +7,15 @@ import { useGetCallById } from '@/hooks/useGetCallById';
 import { useUser } from '@clerk/nextjs';
 import { StreamCall, StreamTheme } from '@stream-io/video-react-sdk';
 import React, { useState } from 'react'
+import { useSearchParams } from 'next/navigation';
 
 const Meeting = ({ params: { id } }: { params: { id: string } }) => {
 
   const { user, isLoaded } = useUser();
   const [isSetupComplete, setIsSetupComplete] = useState(false);
+
+  const searchParams = useSearchParams();
+  const interviewType = searchParams.get('interviewType');
 
   const { call, isCallLoading } = useGetCallById(id);
 
@@ -24,11 +28,12 @@ const Meeting = ({ params: { id } }: { params: { id: string } }) => {
           {!isSetupComplete ? (
             <MeetingSetup setIsSetupComplete={setIsSetupComplete} />
           ) : (
-            <MeetingRoom />
+            <>
+              {interviewType ? <MeetingRoom type={interviewType} /> : <MeetingRoom />}
+            </>
           )}
         </StreamTheme>
       </StreamCall>
-
     </main>
   )
 }

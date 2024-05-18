@@ -12,13 +12,23 @@ import { Textarea } from "./ui/textarea";
 import ReactDatePicker from 'react-datepicker';
 import { Input } from "./ui/input";
 
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+import { SelectForm } from "./InterviewTypeSelect";
+
+
 
 const MeetingTypeList = () => {
 
     const { toast } = useToast();
 
     const router = useRouter();
-    const [meetingState, setMeetingState] = useState<'isScheduleMeeting' | 'isJoiningMeeting' | 'isInstantMeeting' | undefined>();
+    const [meetingState, setMeetingState] = useState<'isInterviewMeeting' | 'isScheduleMeeting' | 'isJoiningMeeting' | 'isInstantMeeting' | undefined>();
 
     const { user } = useUser();
     const client = useStreamVideoClient();
@@ -30,7 +40,7 @@ const MeetingTypeList = () => {
 
     const [callDetails, setCallDetails] = useState<Call>();
 
-    const createMeeting = async () => {
+    const createMeeting = async (type?: string) => {
         if (!client || !user) return;
         try {
             if (!values.dateTime) {
@@ -59,7 +69,9 @@ const MeetingTypeList = () => {
 
             setCallDetails(call);
 
-            if (!values.description) {
+            if (type?.length && type.length > 0) {
+                router.push(`/meeting/${call.id}/?interviewType=${type}`);
+            } else if (!values.description) {
                 router.push(`/meeting/${call.id}`);
             }
 
@@ -106,6 +118,13 @@ const MeetingTypeList = () => {
                 description='Via invitation link'
                 handleClick={() => setMeetingState('isJoiningMeeting')}
                 className="bg-yellow-1"
+            />
+            <HomeCard
+                img={'/icons/join-meeting.svg'}
+                title='Practice Interview'
+                description='With your peers'
+                handleClick={() => setMeetingState('isInterviewMeeting')}
+                className="bg-green-1"
             />
 
             {!callDetails ? (
@@ -188,6 +207,19 @@ const MeetingTypeList = () => {
                     placeholder="Meeting link"
                     className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
+            </MeetingModal>
+
+
+            <MeetingModal
+                isOpen={meetingState === 'isInterviewMeeting'}
+                onClose={() => setMeetingState(undefined)}
+                title='Give Mock Interviews'
+                className='text-center'
+                buttonText='Join Meeting'
+                handleClick={() => { }}
+            >
+                <SelectForm createMeeting={createMeeting} />
+
             </MeetingModal>
 
         </section>
