@@ -22,7 +22,7 @@ const MeetingRoom = ({ type }: { type?: string }) => {
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get('personal');
 
-  const [showQuestions, setShowQuestions] = useState(true);
+  const [showQuestions, setShowQuestions] = useState(false);
 
   const [layout, setLayout] = useState<CallLayoutType>('speaker-left');
   const [showParticipants, setShowParticipants] = useState(false);
@@ -47,7 +47,7 @@ const MeetingRoom = ({ type }: { type?: string }) => {
 
   return (
     <div className='flex gap-2 h-screen overflow-hidden'>
-      {showQuestions && (
+      {type && showQuestions && (
         <div className="flex flex-col h-full w-full gap-4 max-w-xs md:max-w-sm bg-gray-800 text-white p-5 rounded-2xl m-5 max-sm:hidden">
           <div className='font-bold text-xl'>{(type as string).toUpperCase()}&nbsp;Interview</div>
           <AIQuery />
