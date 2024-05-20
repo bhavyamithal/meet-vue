@@ -9,13 +9,15 @@ import { StreamCall, StreamTheme } from '@stream-io/video-react-sdk';
 import React, { useState } from 'react'
 import { useSearchParams } from 'next/navigation';
 
+type InterviewType = 'dsa' | 'webdev' | 'consulting';
+
 const Meeting = ({ params: { id } }: { params: { id: string } }) => {
 
   const { user, isLoaded } = useUser();
   const [isSetupComplete, setIsSetupComplete] = useState(false);
 
   const searchParams = useSearchParams();
-  const interviewType = searchParams.get('interviewType');
+  const interviewType = (searchParams.get('interviewType') as InterviewType);
 
   const { call, isCallLoading } = useGetCallById(id);
 
