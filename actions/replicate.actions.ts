@@ -5,6 +5,11 @@ import Replicate from "replicate";
 const replicate = new Replicate();
 
 export const fetchWebdevQuestionReplicate = async () => {
+
+    const replicate = new Replicate({
+        auth: process.env.REPLICATE_API_TOKEN,
+    });
+
     try {
         const input = {
             prompt: `ask me a theoretical question about web development. keep the question length brief your response should be of the format : 'Question: your question Hint: brief hint'`,
@@ -12,7 +17,7 @@ export const fetchWebdevQuestionReplicate = async () => {
             max_tokens: 10000,
             temperature: 0.5,
         };
-        
+
 
         let questionAnswer = '';
 
@@ -34,6 +39,11 @@ export const fetchWebdevQuestionReplicate = async () => {
 
 
 export const fetchConsultingQuestionReplicate = async () => {
+
+    const replicate = new Replicate({
+        auth: process.env.REPLICATE_API_TOKEN,
+    });
+
     try {
         const input = {
             prompt: `ask me a random market case study question with sample company names from the real world. Make up detailed background information about the company in the question. keep the question length brief your response should be of the format : 'Question: your question Hint: brief hint'`,
@@ -41,7 +51,7 @@ export const fetchConsultingQuestionReplicate = async () => {
             max_tokens: 10000,
             temperature: 0.5,
         };
-        
+
 
         let questionAnswer = '';
 
