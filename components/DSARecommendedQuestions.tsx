@@ -46,7 +46,17 @@ const DSARecommendedQuestions = ({ type }: { type: interviewType }) => {
 
   return (
     <div className="container w-full">
-      <div className="shadow-lg w-full rounded-lg h-96 overflow-y-auto custom-scrollbar">
+
+      <button
+        onClick={loading ? undefined : getAnotherQuestion}
+        disabled={loading}
+        className={`w-full mb-5 flex items-center justify-center cursor-pointer rounded-2xl ${loading ? 'bg-gray-400' : 'bg-[#19232d] hover:bg-[#4c535b]'} text-white px-4 py-2 transition-all mt-4`}
+      >
+        {loading ? 'Loading...' : isFirstTime ? 'Get a New Question' : 'Get Another Question'}
+      </button>
+
+
+      <div className=" w-full rounded-lg h-96 overflow-y-auto custom-scrollbar pb-10">
         {question ? (
           <div>
             <h1 className="text-xl font-bold mb-4">{question.questionTitle}</h1>
@@ -104,12 +114,7 @@ const DSARecommendedQuestions = ({ type }: { type: interviewType }) => {
           )
         )}
       </div>
-      <div
-        onClick={loading ? undefined : getAnotherQuestion}
-        className={`flex items-center justify-center cursor-pointer rounded-2xl ${loading ? 'bg-gray-400' : 'bg-[#19232d] hover:bg-[#4c535b]'} text-white px-4 py-2 transition-all mt-4`}
-      >
-        {loading ? 'Loading...' : isFirstTime ? 'Get a New Question' : 'Get Another Question'}
-      </div>
+
     </div>
   );
 };

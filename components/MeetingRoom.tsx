@@ -52,15 +52,21 @@ const MeetingRoom = ({ type }: { type?: interviewType }) => {
     <div className='flex gap-2 h-screen overflow-hidden'>
       {type && showQuestions && (
         <div className="flex flex-col h-full w-full gap-4 max-w-xs md:max-w-sm bg-gray-800 text-white p-5 rounded-2xl m-5 max-sm:hidden">
-          <div className='font-bold text-xl'>{(type as string).toUpperCase()}&nbsp;Interview</div>
+          <div className='font-bold text-xl'>
+            {type === 'dsa' ?
+              (<span>DSA</span>)
+              : type === 'webdev' ?
+                (<span>Web Development</span>)
+                : (<span>Consulting</span>)
+            }
+            &nbsp;Interview
+          </div>
 
           {type === 'dsa' ?
             (<DSARecommendedQuestions type={type} />)
-            :
-            type === 'webdev' ?
+            : type === 'webdev' ?
               (<WebdevQuestions />)
-              :
-              (<ConsultingQuestions />)
+              : (<ConsultingQuestions />)
           }
 
         </div>
