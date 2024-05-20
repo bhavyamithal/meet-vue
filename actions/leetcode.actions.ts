@@ -1,7 +1,6 @@
 "use server";
 
 import { slugs } from '@/constants';
-import fs from 'fs';
 
 export const fetchLeetcodeQuestion = async () => {
 
@@ -21,13 +20,14 @@ export const fetchLeetcodeQuestion = async () => {
             difficulty: question.difficulty,
             question: question.question,
             exampleTestcases: question.exampleTestcases,
-            topicTags: question.topicTags.map((tag: { name: any; }) => tag.name),
-            similarQuestions: JSON.parse(question.similarQuestions).map((similarQuestion: { title: any; titleSlug: any; difficulty: any; }) => ({
+            topicTags: question.topicTags?.map((tag: { name: any; }) => tag.name) ?? [], // Using optional chaining and nullish coalescing
+            similarQuestions: JSON.parse(question.similarQuestions)?.map((similarQuestion: { title: any; titleSlug: any; difficulty: any; }) => ({
                 title: similarQuestion.title,
                 titleSlug: similarQuestion.titleSlug,
                 difficulty: similarQuestion.difficulty
-            }))
+            })) ?? []
         };
+        
         
         return extractedData;
 
