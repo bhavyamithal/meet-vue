@@ -27,6 +27,7 @@ const RecommendedQuestions = ({ type }: { type: interviewType }) => {
     switch (type) {
       case 'dsa':
         const newQuestion = await fetchLeetcodeQuestion();
+        // @ts-ignore
         setQuestion(newQuestion);
         setIsFirstTime(false);
         break;
