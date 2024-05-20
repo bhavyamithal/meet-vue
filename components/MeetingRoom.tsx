@@ -13,7 +13,9 @@ import { LayoutList, Users } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import EndCallButton from './EndCallButton';
 import Loader from './Loader';
-import RecommendedQuestions from './RecommendedQuestions';
+import DSARecommendedQuestions from './DSARecommendedQuestions';
+import WebdevQuestions from './WebdevQuestions';
+import ConsultingQuestions from './ConsultingQuestions';
 
 type CallLayoutType = 'grid' | 'speaker-left' | 'speaker-right';
 type interviewType = 'dsa' | 'webdev' | 'consulting';
@@ -51,7 +53,15 @@ const MeetingRoom = ({ type }: { type?: interviewType }) => {
       {type && showQuestions && (
         <div className="flex flex-col h-full w-full gap-4 max-w-xs md:max-w-sm bg-gray-800 text-white p-5 rounded-2xl m-5 max-sm:hidden">
           <div className='font-bold text-xl'>{(type as string).toUpperCase()}&nbsp;Interview</div>
-          <RecommendedQuestions type={type}/>
+
+          {type === 'dsa' ?
+            (<DSARecommendedQuestions type={type} />)
+            :
+            type === 'webdev' ?
+              (<WebdevQuestions />)
+              :
+              (<ConsultingQuestions />)
+          }
 
         </div>
       )}
@@ -70,15 +80,15 @@ const MeetingRoom = ({ type }: { type?: interviewType }) => {
 
         <div className='left-0 fixed bottom-0 w-full flex items-center justify-center gap-5 bg-gray-900 bg-opacity-50 backdrop-blur-md flex-wrap'>
 
-              {type && (
-                <button onClick={() => setShowQuestions((prev) => !prev)}>
-                  <div className='cursor-pointer rounded-2xl bg-[#19232d] hover:bg-[#4c535b] px-4 py-2 transition-all'>
-                    <div className='text-white'>
-                      {!showQuestions ? ('View Recommended Questions') : ('Hide Recommended Questions')}
-                    </div>
-                  </div>
-                </button>
-              )}
+          {type && (
+            <button onClick={() => setShowQuestions((prev) => !prev)}>
+              <div className='cursor-pointer rounded-2xl bg-[#19232d] hover:bg-[#4c535b] px-4 py-2 transition-all'>
+                <div className='text-white'>
+                  {!showQuestions ? ('View Recommended Questions') : ('Hide Recommended Questions')}
+                </div>
+              </div>
+            </button>
+          )}
           <DropdownMenu>
             <div className='flex items-center'>
               <DropdownMenuTrigger className='cursor-pointer rounded-2xl bg-[#19232d] hover:bg-[#4c535b] px-4 py-2 transition-all'>
