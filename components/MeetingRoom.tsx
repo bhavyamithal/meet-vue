@@ -13,11 +13,12 @@ import { LayoutList, Users } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import EndCallButton from './EndCallButton';
 import Loader from './Loader';
-import AIQuery from './AIQuery';
+import RecommendedQuestions from './RecommendedQuestions';
 
 type CallLayoutType = 'grid' | 'speaker-left' | 'speaker-right';
+type interviewType = 'dsa' | 'webdev' | 'consulting';
 
-const MeetingRoom = ({ type }: { type?: string }) => {
+const MeetingRoom = ({ type }: { type?: interviewType }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get('personal');
@@ -50,13 +51,8 @@ const MeetingRoom = ({ type }: { type?: string }) => {
       {type && showQuestions && (
         <div className="flex flex-col h-full w-full gap-4 max-w-xs md:max-w-sm bg-gray-800 text-white p-5 rounded-2xl m-5 max-sm:hidden">
           <div className='font-bold text-xl'>{(type as string).toUpperCase()}&nbsp;Interview</div>
-          <AIQuery />
-          <div
-            onClick={() => {}}
-            className='flex items-center justify-center cursor-pointer rounded-2xl bg-[#19232d] hover:bg-[#4c535b] px-4 py-2 transition-all'
-          >
-            Get Another Question
-          </div>
+          <RecommendedQuestions type={type}/>
+
         </div>
       )}
 
