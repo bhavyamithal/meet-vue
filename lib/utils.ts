@@ -15,3 +15,13 @@ export const formatQuestionResponse = (response: string) => {
   }
   return { question: '', hint: '' };
 };
+export const formatQuestionResponseGroq = (response: string) => {
+  const startIndex = response?.indexOf('Question:');
+  const endIndex = response?.indexOf('Answer:');
+  if (startIndex !== -1 && endIndex !== -1) {
+    const question = response.substring(startIndex + 10, endIndex).trim();
+    const answer = response.substring(endIndex + 7).trim();
+    return { question, answer };
+  }
+  return { question: '', answer: '' };
+};

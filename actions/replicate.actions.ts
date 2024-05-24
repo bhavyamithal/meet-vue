@@ -30,7 +30,7 @@ export const fetchWebdevQuestionReplicate = async () => {
             }
         }
 
-        console.log(questionAnswer);
+        // console.log(questionAnswer);
         return questionAnswer;
     } catch (error) {
         console.error("AI question generation failed:", error);
@@ -64,7 +64,7 @@ export const fetchConsultingQuestionReplicate = async () => {
             }
         }
 
-        console.log(questionAnswer);
+        // console.log(questionAnswer);
         return questionAnswer;
     } catch (error) {
         console.error("AI question generation failed:", error);
