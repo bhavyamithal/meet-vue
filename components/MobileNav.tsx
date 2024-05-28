@@ -26,7 +26,7 @@ const MobileNav = () => {
                 </SheetTrigger>
                 <SheetContent side={"left"} className="border-none bg-dark-1" >
                     <SheetClose asChild>
-                        <Link href='/' className='flex items-center gap-1'>
+                        <Link href='/home' className='flex items-center gap-1'>
                             <Image src={'/icons/logo.svg'} width={40} height={40} alt='MeetVue' className='max-sm:size-10' />
                             <p className='px-3 text-xl font-extrabold text-white max-sm:hidden'>MeetVue</p>
                         </Link>
