@@ -65,7 +65,7 @@ const ScheduleInterview = () => {
                 data: {
                     starts_at: startsAt,
                     custom: {
-                        description
+                        description, interviewType: values.type
                     }
                 }
             });

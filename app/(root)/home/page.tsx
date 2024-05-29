@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card";
 import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
-import { SVGProps } from "react";
+import { SVGProps, useState } from "react";
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/components/ui/use-toast';
 import CallList from "@/components/CallList";
 import { FlipWords } from "@/components/ui/flip-words";
 
@@ -10,6 +14,21 @@ type ButtonType = "link" | "default" | "destructive" | "outline" | "secondary" |
 
 export default function Component() {
   const words = ['DSA', "Frontend", 'Consulting'];
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const [meetingLink, setMeetingLink] = useState('');
+
+  const joinMeeting = () => {
+    if (!meetingLink.trim()) {
+      toast({
+        title: 'Invalid Link',
+        description: 'Please enter a valid meeting link.',
+      });
+      return;
+    }
+    router.push(meetingLink);
+  };
 
   return (
     <main className="flex flex-col min-h-screen bg-gray-900 text-white w-full overflow-hidden">
@@ -26,37 +45,56 @@ export default function Component() {
               </p>
             </div>
             <div className="flex items-center justify-center">
-              {/* <Image src={"/images/meet-vue.PNG"} width={600} height={600} alt="meet-vue" className="rounded-xl " /> */}
+              <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-md w-full">
+                <div className="flex flex-col gap-4">
+                  <label className="text-base leading-[22px] text-gray-300">
+                    Paste Meeting Invite Link
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full rounded bg-gray-700 text-gray-300 p-2 focus:outline-none"
+                    placeholder="Enter meeting link"
+                    value={meetingLink}
+                    onChange={(e) => setMeetingLink(e.target.value)}
+                  />
+                  <button
+                    onClick={joinMeeting}
+                    className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Join Meeting
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
       <section className="w-full bg-gray-900 overflow-hidden">
-        <div className="py-10 px-4 md:px-12 bg-gray-800 text-white">
-          <div className="w-full">
-            <h2 className="text-2xl font-bold mb-4">Upcoming Mock Interviews</h2>
+        <div className="py-24 px-4 md:px-12 bg-gray-800 text-neutral-300">
+          <div className="w-full py-6">
+            <h2 className="text-4xl font-bold mb-4">Upcoming Mock Interviews</h2>
             <CallList type="upcoming" isHomepage={true} />
           </div>
           <div className="mt-8">
-            <h2 className="text-2xl font-bold mb-4">Recent Interviews</h2>
+            <h2 className="text-4xl font-bold mb-4">Recent Interviews</h2>
             <CallList type="ended" isHomepage={true} />
           </div>
           <div className="mt-8">
-            <h2 className="text-2xl font-bold mb-4">Recorded Interviews</h2>
+            <h2 className="text-4xl font-bold mb-4">Recorded Interviews</h2>
             <CallList type="recordings" isHomepage={true} />
           </div>
         </div>
       </section>
-      <footer className="w-full text-gray-400 bg-gray-800 px-4 md:px-6 py-6 flex items-center justify-between">
+      <footer className="w-full text-gray-400 bg-black px-4 md:px-6 py-6 flex items-center justify-between">
         <div className="text-sm">© 2024 MeetVue. All rights reserved.</div>
         <nav className="flex items-center gap-4">
-          <Link className="hover:text-white hover:underline underline-offset-4" href="#">
-            Privacy
+          <Link className="hover:text-white hover:underline underline-offset-4" href="https://github.com/bhavyamithal/meet-vue">
+            View source code
           </Link>
           <Link className="hover:text-white hover:underline underline-offset-4" href="#">
-            Terms
+            Back to Top
           </Link>
-          <Link className="hover:text-white hover:underline underline-offset-4" href="#">
+          <Link className="hover:text-white hover:underline underline-offset-4" href="mailto:bm820@snu.edu.in">
             Contact
           </Link>
         </nav>
@@ -64,7 +102,6 @@ export default function Component() {
     </main>
   );
 }
-
 
 function FileQuestionIcon(props: SVGProps<SVGSVGElement>) {
   return (

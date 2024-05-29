@@ -73,7 +73,7 @@ const CallList = ({ type, isHomepage = false }: CallListProps) => {
     const noCallsMessage = getNoCallsMessage();
 
     if (isHomepage && calls.length > 3) {
-        calls = calls.slice(0, 3);
+        calls = calls.slice(0, 6);
     }
 
     const items = calls.map((meeting: Call | CallRecording) => ({
@@ -87,13 +87,13 @@ const CallList = ({ type, isHomepage = false }: CallListProps) => {
         link:
             type === 'recordings'
                 ? (meeting as CallRecording).url
-                : `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${(meeting as Call).id}`,
+                : `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${(meeting as Call).id}/?interviewType=${(meeting as Call).state?.custom?.interviewType}`,
     }));
 
     return (
         <div className='px-4 md:px-8 overflow-hidden'>
             {calls.length > 0 ? (
-                <HoverEffect items={items} className="" />
+                <HoverEffect items={items} className="" type={type}/>
             ) : (
                 <HoverEffect items={[
                     {

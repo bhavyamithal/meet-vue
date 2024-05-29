@@ -21,7 +21,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
         <main className='relative overflow-hidden'>
             <div className='w-screen flex items-center bg-black bg-opacity-50 justify-between text-neutral-200 p-2 px-14'>
                 <div className=''>
-                    <Link href={'/'} className="flex gap-2 relative z-30">
+                    <Link href={'/home'} className="flex gap-2 relative z-30">
                         <Image src={"/icons/logo.svg"} width={24} height={24} alt="MeetVue" />
                         <h2 className="font-bold">MeetVue</h2>
                     </Link>
@@ -39,8 +39,6 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
                 </section>
 
             </div>
-
-            Footer
         </main>
     )
 }
