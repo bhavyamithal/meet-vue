@@ -22,7 +22,7 @@ const EndCallButton = () => {
     return (
         <Button onClick={async () => {
             await call.endCall();
-            router.push('/');
+            router.push('/home');
         }} className=' bg-red-600 cursor-pointer rounded-2xl hover:bg-red-500 px-4 py-2 transition-all'>
             End call for everyone
         </Button>
