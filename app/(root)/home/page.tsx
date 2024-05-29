@@ -1,36 +1,129 @@
-import MeetingTypeList from '@/components/MeetingTypeList';
-import { format, toZonedTime } from 'date-fns-tz';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card";
+import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
+import { SVGProps } from "react";
+import CallList from "@/components/CallList";
+import { FlipWords } from "@/components/ui/flip-words";
 
-const Home = () => {
-  // Define the time zone you want to use
-  const timeZone = 'Asia/Kolkata';
+type ButtonType = "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | "primary" | null | undefined;
 
-  // Get the current date in UTC and convert it to the specified time zone
-  const now = new Date();
-  const zonedDate = toZonedTime(now, timeZone);
-
-  // Format the date and time according to your needs
-  const time = format(zonedDate, 'hh:mm a', { timeZone });
-  const date = format(zonedDate, 'EEEE, MMMM d, yyyy', { timeZone });
+export default function Component() {
+  const words = ['DSA', "Frontend", 'Consulting'];
 
   return (
-    <section className='flex size-full flex-col gap-10 text-white'>
-      <div className='h-[300px] w-full rounded-[20px] bg-hero bg-cover'>
-        <div className='flex h-full flex-col justify-between max-md:px-5 max-md:py-8 lg:p-11'>
-          <h2 className='glassmorphism max-w-[270px] rounded-xl py-2 text-center text-base font-normal'>
-            Upcoming meeting at 12:30 PM
-          </h2>
-          <div className='flex flex-col gap-2'>
-            <h1 className='text-4xl font-extrabold lg:text-5xl'>
-              {`${time}`}
-            </h1>
-            <p className='text-lg font-medium text-sky-1 lg:text-2xl'>{`${date}`}</p>
+    <main className="flex flex-col min-h-screen bg-gray-900 text-white w-full overflow-hidden">
+      <section className="overflow-hidden">
+        <div className="h-screen w-full relative flex items-center justify-center bg-gradient-to-br from-gray-800 to-black">
+          <div className="absolute inset-0 flex items-center justify-center bg-black opacity-50 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+          <div className="relative grid grid-cols-1 md:grid-cols-2 w-full max-w-6xl mx-auto px-4">
+            <div className="flex flex-col items-center md:items-start justify-center text-center md:text-left">
+              <h1 className="text-2xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">
+                Ace Your Next<br /><FlipWords words={words} /> Interview
+              </h1>
+              <p className="mt-8 text-lg text-gray-300 md:pr-36">
+                Practice with real-time mock interviews and get personalized feedback to improve your skills.
+              </p>
+            </div>
+            <div className="flex items-center justify-center">
+              {/* <Image src={"/images/meet-vue.PNG"} width={600} height={600} alt="meet-vue" className="rounded-xl " /> */}
+            </div>
           </div>
         </div>
-      </div>
-      <MeetingTypeList />
-    </section>
-  )
+      </section>
+      <section className="w-full bg-gray-900 overflow-hidden">
+        <div className="py-10 px-4 md:px-12 bg-gray-800 text-white">
+          <div className="w-full">
+            <h2 className="text-2xl font-bold mb-4">Upcoming Mock Interviews</h2>
+            <CallList type="upcoming" isHomepage={true} />
+          </div>
+          <div className="mt-8">
+            <h2 className="text-2xl font-bold mb-4">Recent Interviews</h2>
+            <CallList type="ended" isHomepage={true} />
+          </div>
+          <div className="mt-8">
+            <h2 className="text-2xl font-bold mb-4">Recorded Interviews</h2>
+            <CallList type="recordings" isHomepage={true} />
+          </div>
+        </div>
+      </section>
+      <footer className="w-full text-gray-400 bg-gray-800 px-4 md:px-6 py-6 flex items-center justify-between">
+        <div className="text-sm">© 2024 MeetVue. All rights reserved.</div>
+        <nav className="flex items-center gap-4">
+          <Link className="hover:text-white hover:underline underline-offset-4" href="#">
+            Privacy
+          </Link>
+          <Link className="hover:text-white hover:underline underline-offset-4" href="#">
+            Terms
+          </Link>
+          <Link className="hover:text-white hover:underline underline-offset-4" href="#">
+            Contact
+          </Link>
+        </nav>
+      </footer>
+    </main>
+  );
 }
 
-export default Home;
+
+function FileQuestionIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 17h.01" />
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
+      <path d="M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3" />
+    </svg>
+  );
+}
+
+function MenuIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="4" x2="20" y1="12" y2="12" />
+      <line x1="4" x2="20" y1="6" y2="6" />
+      <line x1="4" x2="20" y1="18" y2="18" />
+    </svg>
+  );
+}
+
+function VideoIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M23 7l-7 5 7 5V7z" />
+      <rect width="15" height="14" x="1" y="5" rx="2" ry="2" />
+    </svg>
+  );
+}
