@@ -44,7 +44,7 @@ export function LandingNavBar() {
                                         </a>
                                     </NavigationMenuLink>
                                 </li>
-                                <ListItem href="/" title="Introduction">
+                                <ListItem href="/home" title="Introduction">
                                     Choose from a range of different topics like DSA & many more!
                                 </ListItem>
                                 <ListItem href="/sign-in" title="Sign In">
@@ -120,14 +120,14 @@ export function LandingNavBar() {
 
 
                 <SignedOut>
-                    <NavigationMenuItem className="hover:bg-slate-700 transition-all rounded-full">
+                    <NavigationMenuItem className="hover:text-white hover:underline underline-offset-4 transition-all rounded-full">
                         <Link href="/sign-in" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 SignIn
                             </NavigationMenuLink>
                         </Link>
                     </NavigationMenuItem>
-                    <NavigationMenuItem className="hover:bg-slate-700 transition-all rounded-full">
+                    <NavigationMenuItem className="hover:text-white hover:underline underline-offset-4 transition-all rounded-full">
                         <Link href="/sign-up" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 SignUp

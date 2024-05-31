@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import { LandingNavBar } from '@/components/LandingNavBar';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,6 +20,7 @@ const Layout = ({
                 <LandingNavBar />
             </div>
             {children}
+            <Footer />
         </div>
     )
 }

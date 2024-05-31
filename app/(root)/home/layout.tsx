@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import { LandingNavBar } from '@/components/LandingNavBar';
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
@@ -39,6 +40,8 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
                 </section>
 
             </div>
+
+            <Footer />
         </main>
     )
 }

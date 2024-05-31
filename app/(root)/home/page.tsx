@@ -85,20 +85,6 @@ export default function Component() {
           </div>
         </div>
       </section>
-      <footer className="w-full text-gray-400 bg-black px-4 md:px-6 py-6 flex items-center justify-between">
-        <div className="text-sm">© 2024 MeetVue. All rights reserved.</div>
-        <nav className="flex items-center gap-4">
-          <Link className="hover:text-white hover:underline underline-offset-4" href="https://github.com/bhavyamithal/meet-vue">
-            View source code
-          </Link>
-          <Link className="hover:text-white hover:underline underline-offset-4" href="#">
-            Back to Top
-          </Link>
-          <Link className="hover:text-white hover:underline underline-offset-4" href="mailto:bm820@snu.edu.in">
-            Contact
-          </Link>
-        </nav>
-      </footer>
     </main>
   );
 }
