@@ -21,27 +21,27 @@ const LandingPage = () => {
             <GridBackground />
             <HeroSection
                 heading='Tailored Interview Questions'
-                subHeading='Upload your job description and resume to receive custom interview questions tailored to your work experience.'
+                subHeading='Select your job description to receive custom interview questions tailored to your domain.'
                 imageUrl='/images/meet-vue.PNG'
                 position='bottom'
                 ctaText='Get Started'
-                ctaLink='/get-started'
+                ctaLink='/home'
             />
             <HeroSection
                 heading='Practice Makes Perfect'
-                subHeading='Improve your interview skills with unlimited practice questions generated from your job applications.'
-                imageUrl='/images/meet-vue.PNG'
-                position='right'
-                ctaText='Learn More'
-                ctaLink='/learn-more'
-            />
-            <HeroSection
-                heading='Ace Your Interviews'
-                subHeading='With our custom questions, you can feel confident and prepared for any interview.'
+                subHeading='Improve your interview skills with unlimited AI generated practice questions.'
                 imageUrl='/images/meet-vue.PNG'
                 position='left'
-                ctaText='Sign Up Now'
-                ctaLink='/sign-up'
+                ctaText='Sign In'
+                ctaLink='/sign-in'
+            />
+            <HeroSection
+                heading='Schedule Interviews'
+                subHeading='Schedule a future interview and invite your peers with a link.'
+                imageUrl='/images/meet-vue.PNG'
+                position='right'
+                ctaText='Schedule Interview'
+                ctaLink='/home/schedule-interview'
             />
         </div>
     );

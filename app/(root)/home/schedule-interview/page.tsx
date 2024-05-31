@@ -107,7 +107,7 @@ const ScheduleInterview = () => {
                             Practice with real-time mock interviews and get personalized feedback to improve your skills.
                         </p>
                     </div>
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center max-sm:pt-12">
                         <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-md w-full">
                             <div className="flex flex-col gap-4">
                                 <label className="text-base leading-[22px] text-gray-300">
@@ -120,7 +120,7 @@ const ScheduleInterview = () => {
                                     <SelectTrigger className="bg-gray-700 text-gray-300">
                                         <SelectValue placeholder="Select interview type" />
                                     </SelectTrigger>
-                                    <SelectContent className="bg-gray-800">
+                                    <SelectContent className="bg-gray-800 text-gray-300">
                                         <SelectItem value="dsa">DSA</SelectItem>
                                         <SelectItem value="webdev">Web Development</SelectItem>
                                         <SelectItem value="consulting">Consulting</SelectItem>

@@ -37,14 +37,14 @@ export default function Component() {
           <div className="absolute inset-0 flex items-center justify-center bg-black opacity-50 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
           <div className="relative grid grid-cols-1 md:grid-cols-2 w-full max-w-6xl mx-auto px-4">
             <div className="flex flex-col items-center md:items-start justify-center text-center md:text-left">
-              <h1 className="text-2xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">
+              <h1 className="text-4xl sm:text-5xl lg:7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">
                 Ace Your Next<br /><FlipWords words={words} /> Interview
               </h1>
               <p className="mt-8 text-lg text-gray-300 md:pr-36">
                 Practice with real-time mock interviews and get personalized feedback to improve your skills.
               </p>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center max-lg:pt-12">
               <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-md w-full">
                 <div className="flex flex-col gap-4">
                   <label className="text-base leading-[22px] text-gray-300">

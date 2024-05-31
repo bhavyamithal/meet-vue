@@ -138,7 +138,7 @@ export function LandingNavBar() {
 
 
                 <SignedIn>
-                    <NavigationMenuItem className="hover:bg-slate-700 transition-all rounded-full">
+                    <NavigationMenuItem className="transition-all rounded-full">
                         <UserButton afterSignOutUrl="/" />
                     </NavigationMenuItem>
                 </SignedIn>

@@ -92,6 +92,10 @@
   .flex-between {
     @apply flex justify-between items-center;
   }
+
+  .button-style {
+    @apply text-neutral-200 underline underline-offset-4
+  }
 }
 
 /* animation */
