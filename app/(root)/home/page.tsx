@@ -6,7 +6,7 @@ import { useToast } from '@/components/ui/use-toast';
 import CallList from "@/components/CallList";
 import { FlipWords } from "@/components/ui/flip-words";
 
-export default function Component() {
+export default function Page() {
   const words = ['DSA', "Frontend", 'Consulting'];
   const router = useRouter();
   const { toast } = useToast();
@@ -21,7 +21,8 @@ export default function Component() {
       });
       return;
     }
-    router.replace(meetingLink);
+    // Open the meeting link in a new tab
+    window.open(meetingLink, '_blank');
   };
 
   return (
