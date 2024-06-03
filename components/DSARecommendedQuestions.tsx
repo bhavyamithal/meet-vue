@@ -4,7 +4,7 @@ import { fetchLeetcodeQuestion } from '@/actions/leetcode.actions';
 import React, { useState } from 'react';
 import { useToast } from './ui/use-toast';
 
-type interviewType = 'dsa' | 'webdev' | 'consulting';
+type InterviewType = 'dsa' | 'webdev' | 'consulting';
 
 interface QuestionType {
   link: string;
@@ -20,13 +20,13 @@ interface QuestionType {
   }[];
 }
 
-const DSARecommendedQuestions = ({ type }: { type: interviewType }) => {
+const DSARecommendedQuestions = ({ type }: { type: InterviewType }) => {
   const [question, setQuestion] = useState<QuestionType | undefined>();
   const [isFirstTime, setIsFirstTime] = useState(true);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
-  async function getAnotherQuestion() {
+  const handleGetAnotherQuestion = async () => {
     setLoading(true);
     try {
       const newQuestion = await fetchLeetcodeQuestion();
@@ -42,21 +42,21 @@ const DSARecommendedQuestions = ({ type }: { type: interviewType }) => {
     } finally {
       setLoading(false);
     }
-  }
+  };
+
+  const buttonText = loading ? 'Loading...' : isFirstTime ? 'Get a New Question' : 'Get Another Question';
+  const buttonClass = `w-full mb-5 flex items-center justify-center cursor-pointer rounded-2xl ${loading ? 'bg-gray-400' : 'bg-[#19232d] hover:bg-[#4c535b]'} text-white px-4 py-2 transition-all mt-4`;
 
   return (
     <div className="container w-full">
-
       <button
-        onClick={loading ? undefined : getAnotherQuestion}
+        onClick={loading ? undefined : handleGetAnotherQuestion}
         disabled={loading}
-        className={`w-full mb-5 flex items-center justify-center cursor-pointer rounded-2xl ${loading ? 'bg-gray-400' : 'bg-[#19232d] hover:bg-[#4c535b]'} text-white px-4 py-2 transition-all mt-4`}
+        className={buttonClass}
       >
-        {loading ? 'Loading...' : isFirstTime ? 'Get a New Question' : 'Get Another Question'}
+        {buttonText}
       </button>
-
-
-      <div className=" w-full rounded-lg h-96 overflow-y-auto custom-scrollbar pb-10">
+      <div className="w-full rounded-lg h-96 overflow-y-auto custom-scrollbar pb-10">
         {question ? (
           <div>
             <h1 className="text-xl font-bold mb-4">{question.questionTitle}</h1>
@@ -114,7 +114,6 @@ const DSARecommendedQuestions = ({ type }: { type: interviewType }) => {
           )
         )}
       </div>
-
     </div>
   );
 };

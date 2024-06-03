@@ -44,7 +44,7 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card>
-            <CardTitle>{item.title}</CardTitle>
+            <CardTitle>{item.title.slice(0, 21)}{item.title.length > 21 ? '...' : ''}</CardTitle>
             <CardDescription className="pb-6">{item.description}</CardDescription>
             {type==='upcoming' && (
               <Link href={item.link} className="bg-blue-600">

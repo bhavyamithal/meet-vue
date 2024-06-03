@@ -1,16 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card } from "@/components/ui/card";
-import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
 import { SVGProps, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
 import CallList from "@/components/CallList";
 import { FlipWords } from "@/components/ui/flip-words";
-
-type ButtonType = "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | "primary" | null | undefined;
 
 export default function Component() {
   const words = ['DSA', "Frontend", 'Consulting'];
@@ -27,7 +21,7 @@ export default function Component() {
       });
       return;
     }
-    router.push(meetingLink);
+    router.replace(meetingLink);
   };
 
   return (

@@ -47,6 +47,7 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
+
 .glassmorphism2 {
   background: rgba(18, 17, 17, 0.25);
   backdrop-filter: blur(8px);
@@ -66,6 +67,7 @@
 .cl-logoBox {
   height: 40px;
 }
+
 .cl-dividerLine {
   background: #252a41;
   height: 2px;
@@ -78,6 +80,7 @@
 .cl-internal-wkkub3 {
   color: white;
 }
+
 .cl-userButtonPopoverActionButton {
   color: white;
 }
@@ -96,6 +99,56 @@
   .button-style {
     @apply text-neutral-200 underline underline-offset-4
   }
+
+  /* Tailwind CSS classes for markdown content */
+  .markdown-content {
+    @apply text-sm text-white leading-relaxed;
+  }
+
+  .markdown-content h1 {
+    @apply text-3xl font-bold mt-6 mb-4;
+  }
+
+  .markdown-content h2 {
+    @apply text-2xl font-semibold mt-5 mb-3;
+  }
+
+  .markdown-content h3 {
+    @apply text-xl font-semibold mt-4 mb-2;
+  }
+
+  .markdown-content p {
+    @apply mb-4;
+  }
+
+  .markdown-content ul {
+    @apply list-disc pl-5 mb-4;
+  }
+
+  .markdown-content ol {
+    @apply list-decimal pl-5 mb-4;
+  }
+
+  .markdown-content li {
+    @apply mb-2;
+  }
+
+  .markdown-content pre {
+    @apply bg-gray-800 text-white p-4 rounded mb-4 overflow-x-auto;
+  }
+
+  .markdown-content code {
+    @apply bg-gray-200 text-red-600 px-1 py-0.5 rounded;
+  }
+
+  .markdown-content a {
+    @apply text-blue-600 hover:underline;
+  }
+
+  .markdown-content blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic text-gray-600 mb-4;
+  }
+
 }
 
 /* animation */
@@ -144,6 +197,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
