@@ -21,8 +21,29 @@ export default function Page() {
       });
       return;
     }
-    // Open the meeting link in a new tab
-    window.open(meetingLink, '_blank');
+
+    // Example parsing logic - adjust according to the actual structure of your meetingLink
+    // Assuming the meetingLink has a structure like https://example.com/meeting/8f10c0eb-eabf-492d-87e9-fad2b6170157/?interviewType=webdev
+    // Extract the ID and interview type from the meetingLink
+    const idMatch = meetingLink.match(/\/meeting\/([^\/]+)\//); // Adjust regex based on actual URL structure
+    const interviewTypeMatch = meetingLink.match(/\?interviewType=([^&]+)/);
+
+    if (!idMatch || !interviewTypeMatch) {
+      toast({
+        title: 'Invalid Link Format',
+        description: 'The meeting link does not contain the required information.',
+      });
+      return;
+    }
+
+    const id = idMatch[1];
+    const interviewType = interviewTypeMatch[1];
+
+    // Construct the new meeting link
+    const newMeetingLink = `/meeting/${id}?interviewType=${interviewType}`;
+
+    // Navigate to the new meeting link within the app
+    router.push(newMeetingLink);
   };
 
   return (
