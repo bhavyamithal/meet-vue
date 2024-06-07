@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn, trimLink } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
@@ -47,7 +47,7 @@ export const HoverEffect = ({
             <CardTitle>{item.title.slice(0, 21)}{item.title.length > 21 ? '...' : ''}</CardTitle>
             <CardDescription className="pb-6">{item.description}</CardDescription>
             {type==='upcoming' && (
-              <Link href={item.link} className="bg-blue-600">
+              <Link href={trimLink(item.link)} className="bg-blue-600">
                 <div className="flex items-center justify-center border border-gray-400 h-12 text-nowrap rounded-lg mt-16 hover:text-white hover:underline underline-offset-4 transition-all">
                   <h3>Join Interview</h3>
                 </div>

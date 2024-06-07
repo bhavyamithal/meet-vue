@@ -22,7 +22,7 @@ const WebdevQuestions = () => {
   };
 
   return (
-    <div className="container mx-auto h-full text-white overflow-y-auto custom-scrollbar">
+    <div className="container mx-auto h-full text-white overflow-y-auto custom-scrollbar pb-24">
       <button
         className={`bg-gray-900 hover:bg-gray-600 font-bold py-2 px-6 rounded-full w-full mb-6 transition-all ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         onClick={handleClick}

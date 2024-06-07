@@ -25,3 +25,11 @@ export const formatQuestionResponseGroq = (response: string) => {
   }
   return { question: '', answer: '' };
 };
+
+export function trimLink(link: string): string {
+  // Extract the part after 'meeting/'
+  const trimmedPart = link.split('meeting/')[1];
+  // Prepend 'meeting/' to the extracted part
+  const newLink = 'meeting/' + trimmedPart;
+  return newLink;
+}

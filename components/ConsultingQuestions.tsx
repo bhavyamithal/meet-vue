@@ -22,7 +22,7 @@ const ConsultingQuestions = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 h-full overflow-y-auto custom-scrollbar">
+    <div className="container mx-auto p-4 h-full overflow-y-auto custom-scrollbar pb-24">
       <button
         className={`bg-gray-900 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full w-full mb-6 transition-all ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
         onClick={handleClick}
