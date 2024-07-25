@@ -61,6 +61,13 @@ export function LandingNavBar() {
 
                 <SignedIn>
                     <NavigationMenuItem className="hover:text-white hover:underline underline-offset-4 transition-all rounded-full">
+                        <Link href="/ai-interview" legacyBehavior passHref>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                AI Interview
+                            </NavigationMenuLink>
+                        </Link>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem className="hover:text-white hover:underline underline-offset-4 transition-all rounded-full">
                         <Link href="/home/schedule-interview" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 Schedule Interview
